@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # SPUR-FLYS Library
 
 This is a library created for RobotC and for use on SPUR-FLYS (Team 21) by Jess Zarchi
@@ -25,7 +24,3 @@ Overview of the main functions:
   - tan (float fInput);
   - tanDegrees (float fInput);
   - clipNum (int iInput, int iHigh, int iLow);
-=======
-# SpurFlysLibrary
-21 Library
->>>>>>> 28bdd3a3deee722f2c17c7b41d2cee1f9c39b2ff
