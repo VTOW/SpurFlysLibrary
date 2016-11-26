@@ -164,14 +164,8 @@ motorSet (int iPort, int iSpeed) {
  */
 float
 logDrive (int iInput, float iMultiply) {
-	//return ((pow((iInput / 127), iMultiply)) * 127);
 	return (pow(abs(iInput), iMultiply)) * sgn(iInput);
 }
-
-//int
-//logDrive (float iInput, float iMultiply) {
-//	return (float)((pow((iInput / 127), iMultiply)) * 127);
-//}
 
 /**
  * Tests all motors for 1 second, used for testing motors
