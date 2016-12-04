@@ -1,5 +1,8 @@
 #pragma systemfile
 
+//10.2101761242
+//15.7079632679
+
 #ifndef MOTORLIBRARY_H
 #define MOTORLIBRARY_H
 
@@ -131,16 +134,24 @@ setAllMotor269 () {
  * @param   bIsTrueSpeed If the motor will use trueSpeed
  * @param   bSlew        If the motor will have acceleration curve
  */
-bool bMotorReverse[10], bAccelCurve[10], bTrueSpeed[10];
+ 
+typedef enum _kTrueSpeed {
+	NONE      = 0,
+	LINESPEED = 1,
+	JORDAN    = 2,
+}enTrueSpeed;
+ 
+bool bMotorReverse[10], bAccelCurve[10];
+enTrueSpeed bTrueSpeed[10];
 void
-motorSetup (tMotor iPort, bool bIsReverse, bool bIsTrueSpeed, bool bSlew) {
+motorSetup (tMotor iPort, bool bIsReverse, enTrueSpeed bIsTrueSpeed, bool bSlew) {
 	bMotorReverse[iPort] = bIsReverse;
 	bTrueSpeed[iPort]    = bIsTrueSpeed;
 	bAccelCurve[iPort]   = bSlew;
 }
 
 void
-motorSetup (tMotor iPort, bool bIsReverse, bool bIsTrueSpeed) {
+motorSetup (tMotor iPort, bool bIsReverse, enTrueSpeed bIsTrueSpeed) {
 	bMotorReverse[iPort] = bIsReverse;
 	bTrueSpeed[iPort]    = bIsTrueSpeed;
 }
@@ -160,16 +171,25 @@ motorSetup (tMotor iPort, bool bIsReverse) {
  */
 void
 motorSet (int iPort, int iSpeed) {
-	int iOutput;
+	int iOutput, iError;
 	if (bAccelCurve[iPort]) {
-		int iError = (bTrueSpeed[iPort] ? trueSpeed(iPort, iSpeed) : iSpeed) - motor[iPort];
+		switch (bTrueSpeed[iPort]) {
+		case NONE:      iError = iSpeed - motor[iPort];                    break;
+		case LINESPEED: iError = trueSpeed(iPort, iSpeed) - motor[iPort];  break;
+		case JORDAN:    iError = jTrueSpeed(iSpeed) - motor[iPort];        break;
+		}
 		if (abs(iError) >= 4)
 			iOutput += sgn(iError) * 3;
 		else
 			iOutput = iSpeed;
 		delay(1);
-	} else
-		iOutput = bTrueSpeed[iPort] ? trueSpeed(iPort, iSpeed) : iSpeed;
+	} else {
+		switch (bTrueSpeed[iPort]) {
+		case NONE:      iOutput = iSpeed;                    break;
+		case LINESPEED: iOutput = trueSpeed(iPort, iSpeed);  break;
+		case JORDAN:    iOutput = jTrueSpeed(iSpeed);        break;
+		}
+	}
 	iOutput = clipNum(iOutput, 127, -127);
 	motor[iPort] = bMotorReverse[iPort] ? -iOutput : iOutput;
 }
