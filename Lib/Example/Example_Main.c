@@ -24,12 +24,12 @@ arm (int iSpeed) {
 void
 initIO () {
 	setAllMotor393();
-	motorSetup(port2, false, true);
-	motorSetup(port3, false, true);
-	motorSetup(port4, false, true);
-	motorSetup(port5, false, true);
-	motorSetup(port6, false, true);
-	motorSetup(port7, false, true);
+	motorSetup(port2, false, LINESPEED);
+	motorSetup(port3, false, LINESPEED);
+	motorSetup(port4, false, LINESPEED);
+	motorSetup(port5, false, LINESPEED);
+	motorSetup(port6, false, LINESPEED);
+	motorSetup(port7, false, LINESPEED);
 
 	motorSetup(port1,  true);
 	motorSetup(port8,  false);
