@@ -52,6 +52,8 @@ typedef struct {
 	float derivative;
 	float lastError;
 	float threshold;
+	int   deltaTime;
+	int   lastTime;
 } pid;
 
 #endif
