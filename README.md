@@ -15,8 +15,8 @@ Overview of the main functions:
   - clearAllIME ();
   - setAllMotor393 ();
   - setAllMotor269 ();
-  - motorSetup (tMotor iPort, bool bIsReverse, bool bIsTrueSpeed, bool bSlew);
-  - motorSetup (tMotor iPort, bool bIsReverse, bool bIsTrueSpeed);
+  - motorSetup (tMotor iPort, bool bIsReverse, enTrueSpeed bIsTrueSpeed, bool bSlew);
+  - motorSetup (tMotor iPort, bool bIsReverse, enTrueSpeed bIsTrueSpeed);
   - motorSetup (tMotor iPort, bool bIsReverse);
   - motorSet (int iPort, int iSpeed);
   - logDrive (int iInput, float iMultiply);
