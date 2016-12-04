@@ -1,8 +1,5 @@
 #pragma systemfile
 
-//10.2101761242
-//15.7079632679
-
 #ifndef MOTORLIBRARY_H
 #define MOTORLIBRARY_H
 
