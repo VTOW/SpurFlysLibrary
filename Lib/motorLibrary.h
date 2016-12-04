@@ -196,9 +196,9 @@ testAllMotors () {
 	clearLCDLines();
 	for (int i = 0; i < 10; i++) {
 		displayLCDNumber(0, 0, i + 1);
-		motor[i] = 127;
+		motorSet(i, 127);
 		delay(1000);
-		motor[i] = 0;
+		motorSet(i, 0);
 		clearLCDLines();
 		delay(500);
 	}
