@@ -10,10 +10,7 @@
  *
  * @return	Tanget of input
  */
-float
-tan (float fInput) {
-	return sin(fInput) / cos(fInput);
-}
+#define tan(fInput) sin(fInput) / cos(fInput)
 
 /**
  * Calculates tanget in degrees
@@ -22,10 +19,7 @@ tan (float fInput) {
  *
  * @return	Tanget of input
  */
-float
-tanDegrees (float fInput) {
-	return sinDegrees(fInput) / cosDegrees(fInput);
-}
+#define tanDegree(fInput) sinDegrees(fInput) / cosDegrees(fInput)
 
 /**
  * Limits a number to a high and a low
@@ -36,10 +30,7 @@ tanDegrees (float fInput) {
  *
  * @return	iInput within iHigh and iLow
  */
-int
-clipNum (int iInput, int iHigh, int iLow) {
-	return iInput <= iLow ? iLow : (iInput >= iHigh ? iHigh : iInput);
-}
+#define clipNum(iInput, iHigh, iLow) iInput <= iLow ? iLow : (iInput >= iHigh ? iHigh : iInput)
 
 typedef struct {
 	float current;
