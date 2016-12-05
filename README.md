@@ -7,6 +7,7 @@ The library contains the following:
   - Custom controller curves
   - Custom motor setup
   - Rewritten competition control
+  - Rerun
   - And more to come
   
 Overview of the main functions:
