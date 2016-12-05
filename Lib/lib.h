@@ -71,5 +71,6 @@ waitForReleased8L () {
 
 #include "util.h"
 #include "motorLibrary.h"
+#include "rerun.c"
 
 #endif
